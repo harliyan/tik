@@ -15,11 +15,60 @@
 			return $query->result ();
 		}
 
-		public function peta2() {
-			$this->db->select('data.*, data2.*');
-			$this->db->from('data');
-			$this->db->join('data2', 'data.id = data2.id');
-			return $this->db->get()->result();
+		public function telecenterPeta() {
+
+			$this->db->select ( '*' ); 
+			$this->db->from ( 'data' );
+			$this->db->join ( 'data2', 'data2.id = data.id' , 'left' );
+			$this->db->join ( 'kecamatan', 'kecamatan.id_kecamatan = data.id_kecamatan' , 'left' );
+			$this->db->join ( 'opd', 'opd.id = data.opd' , 'left' );
+			$this->db->join ( 'gis', 'gis.id = data.gis' , 'left' );
+			$where = "gis=1";
+			$this->db->where($where);
+			$query = $this->db->get ();
+			return $query->result ();
+		}
+
+		public function foPeta() {
+
+			$this->db->select ( '*' ); 
+			$this->db->from ( 'data' );
+			$this->db->join ( 'data2', 'data2.id = data.id' , 'left' );
+			$this->db->join ( 'kecamatan', 'kecamatan.id_kecamatan = data.id_kecamatan' , 'left' );
+			$this->db->join ( 'opd', 'opd.id = data.opd' , 'left' );
+			$this->db->join ( 'gis', 'gis.id = data.gis' , 'left' );
+			$where = "gis=2";
+			$this->db->where($where);
+			$query = $this->db->get ();
+			return $query->result ();
+		}
+
+		public function warnetPeta() {
+
+			$this->db->select ( '*' ); 
+			$this->db->from ( 'data' );
+			$this->db->join ( 'data2', 'data2.id = data.id' , 'left' );
+			$this->db->join ( 'kecamatan', 'kecamatan.id_kecamatan = data.id_kecamatan' , 'left' );
+			$this->db->join ( 'opd', 'opd.id = data.opd' , 'left' );
+			$this->db->join ( 'gis', 'gis.id = data.gis' , 'left' );
+			$where = "gis=3";
+			$this->db->where($where);
+			$query = $this->db->get ();
+			return $query->result ();
+		}
+
+		public function sarprasPeta() {
+
+			$this->db->select ( '*' ); 
+			$this->db->from ( 'data' );
+			$this->db->join ( 'data2', 'data2.id = data.id' , 'left' );
+			$this->db->join ( 'kecamatan', 'kecamatan.id_kecamatan = data.id_kecamatan' , 'left' );
+			$this->db->join ( 'opd', 'opd.id = data.opd' , 'left' );
+			$this->db->join ( 'gis', 'gis.id = data.gis' , 'left' );
+			$where = "gis=4";
+			$this->db->where($where);
+			$query = $this->db->get ();
+			return $query->result ();
 		}
 
 		public function utara() {
@@ -192,6 +241,7 @@
 			$query = $this->db->get ();
 			return $query->result_array ();
 		}
+
 		public function edit_cluster($id,$cluster){
 			$hasil=$this->db->query("UPDATE cluster SET cluster='$cluster' WHERE id='$id'");
 			return $hsl;
@@ -203,11 +253,23 @@
 			return $hasil;
 		}
 
+
 		public function getDetails($table, $id)
 		{
-			$data = $this->db->query("SELECT * FROM data WHERE cluster='$id'");
-			return $data->result_array();
+			$this->db->select('data.*, datagis.*, opd.*');
+			$this->db->from('data');
+			$this->db->join ( 'datagis', 'data.id = datagis.id' );
+			$this->db->join ( 'opd', 'opd.id = data.gis'  );
+			$where = "cluster=$id";
+			$this->db->where($where);
+			return $this->db->get()->result_array();
 		}
+
+		// public function getDetails($table, $id)
+		// {
+		// 	$data = $this->db->query("SELECT * FROM datagis JOIN data ON datagis.id = data.id WHERE cluster='$id'");
+		// 	return $data->result_array();
+		// }
 
 		public function getcluster($table, $id)
 		{
@@ -216,6 +278,15 @@
 			$this->db->where('id', $id);
 			return $this->db->get()->result();
 		}
+
+		// public function getcluster($table, $id) {
+
+		// 	$this->db->select ( '*' ); 
+		// 	$this->db->from ( 'datagis' );
+		// 	$this->db->join ( 'datagis', 'datagis.id = data.id' , 'left' );
+		// 	$this->db->where('cluster', $id);
+		// 	return $this->db->get()->result();
+		// }
 
 		public function opd(){
 			$data = $this->db->query("SELECT * FROM opd");

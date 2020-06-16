@@ -33,17 +33,25 @@ class Data_model extends CI_Model
 		return $query->result_array ();
 	}
 
+	// public function datainv()
+	// {
+	// 	$this->db->select ( '*' ); 
+	// 	$this->db->from ( 'data' );
+	// 	$this->db->join ( 'data2', 'data2.id = data.id' , 'left' );
+	// 	$this->db->join ( 'cluster', 'cluster.id = data.cluster' , 'left' );
+	// 	$this->db->join ( 'kecamatan', 'kecamatan.id_kecamatan = data.id_kecamatan' , 'left' );
+	// 	$this->db->join ( 'jointing', 'jointing.id = data.jointing' , 'left' );
+	// 	$this->db->join ( 'opd', 'opd.id = data.opd' , 'left' );
+	// 	$query = $this->db->get ();
+	// 	return $query->result_array ();
+	// }
+
 	public function datainv()
 	{
-		$this->db->select ( '*' ); 
-		$this->db->from ( 'data' );
-		$this->db->join ( 'data2', 'data2.id = data.id' , 'left' );
-		$this->db->join ( 'cluster', 'cluster.id = data.cluster' , 'left' );
-		$this->db->join ( 'kecamatan', 'kecamatan.id_kecamatan = data.id_kecamatan' , 'left' );
-		$this->db->join ( 'jointing', 'jointing.id = data.jointing' , 'left' );
-		$this->db->join ( 'opd', 'opd.id = data.opd' , 'left' );
-		$query = $this->db->get ();
-		return $query->result_array ();
+		$query = "SELECT * FROM `data` LEFT JOIN `data2` ON `data2`.`id` = `data`.`id` LEFT JOIN `datagis` ON `datagis`.`id` = `data`.`id` LEFT JOIN `cluster` ON `datagis`.`cluster` = `cluster`.`id` LEFT JOIN `kecamatan` ON `kecamatan`.`id_kecamatan` = `data`.`id_kecamatan` LEFT JOIN `opd` ON `opd`.`id` = `data`.`opd` LEFT JOIN `jointing` ON `jointing`.`id` = `datagis`.`jointing`
+		";
+
+		return $this->db->query($query)->result_array();
 	}
 
 	public function cluster_tampil() {

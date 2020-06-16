@@ -16,7 +16,6 @@
         $data['title'] = 'Data Inventaris Fiber Optic';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Data_model', 'data');
-        // $data['data'] = $this->data->data();
         $data['data'] = $this->Data_model->datainv();
         $data['data_cluster'] = $this->Data_model->cluster_tampil();
         $data['data_opd'] = $this->Data_model->opd_tampil();

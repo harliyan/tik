@@ -9,6 +9,7 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
+                <img height="30px" src="<?= base_url('/assets/img/fav.ico')?>"><b><center class="mt-1 mb-2 ml-2 mr-2"><span style="color: #111111"><?= $desc['desc']; ?></span></center></b>
             </div>
           </form>
 

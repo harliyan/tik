@@ -1,7 +1,5 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<!-- <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-  <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url(''); ?>">
     <div class="sidebar-brand-icon">
       <img height="30px" src="<?= base_url('/assets/img/fav.ico')?>">
@@ -9,15 +7,12 @@
     <div class="sidebar-brand-text mx-3">Pekalongan</div>
   </a>
 
-  <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
-  <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <center class="mt-2 mb-2 ml-2 mr-2"><b><span style="color: #ffffff"><?= $desc['desc']; ?></b></span></center>
+    <center class="mt-2 mb-2 ml-2 mr-2"><small><span style="color: #ffffff"><?= $desc['desc']; ?></small></span></center>
   </li>
 
-  <!-- Divider -->
   <hr class="sidebar-divider">
 
 
@@ -27,7 +22,6 @@
       <span>Dashboard</span></a>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
         <i class="fas fa-fw fa-ellipsis-v"></i>
@@ -44,20 +38,17 @@
       </div>
     </li>
 
-      <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('about'); ?>">
           <i class="fas fa-fw fa-info"></i>
           <span>About</span></a>
         </li>
 
-        <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
 
       </ul>
-    <!-- End of Sidebar -->
+ -->
